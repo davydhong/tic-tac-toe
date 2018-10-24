@@ -19,13 +19,14 @@
     if (rowSum.includes(3)) {
       return 1;
     } else if (rowSum.includes(-3)) {
-      return -3;
+      return -1;
     } else {
       return null;
     }
   };
 
   const getWinner = board => {
+    console.log(rowCheck(board));
     if (rowCheck(board) === 1 || rowCheck(rotateBoard(board)) === 1) {
       return 1;
     } else if (rowCheck(board) === -1 || rowCheck(rotateBoard(board)) === -1) {
@@ -44,10 +45,10 @@
 
     board[x][y] = whoseTurn ? -1 : 1;
 
-    if (getWinner === 1) {
-      alert('X won!');
-    } else if (getWinner === -1) {
-      alert('O won!');
+    if (getWinner(board) === 1) {
+      setTimeout(() => alert('X won!'), 0);
+    } else if (getWinner(board) === -1) {
+      setTimeout(() => alert('O won!'), 0);
     }
     whoseTurn = !whoseTurn;
   };
